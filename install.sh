@@ -6,24 +6,17 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do sudo -nv true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+read waste
 #Ask for name to use in oh my zsh
-printf "\n\nEnter name to display in prompt"
-read -r name
-while [ -z "$name" ]
-do
-  read -r name
-done
-
+echo "Enter name to display in prompt"
+read name
 
 # Check for Homebrew,
 # Install if we don't have it
-if test ! "$(command -v brew)"; then
+if test ! $(which brew); then
   echo "Installing homebrew..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
-
-echo "Installing java";
-brew cask install java
 
 # Make sure we’re using the latest Homebrew.
 brew update
@@ -50,7 +43,7 @@ brew install ack
 brew install git
 
 
-echo "$name" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/nrjais/oh-my-zsh/master/tools/install.sh)"
+echo $name | sh -c "$(curl -fsSL https://raw.githubusercontent.com/nrjais/oh-my-zsh/master/tools/install.sh)"
 
 echo "Installing vim";
 git clone --depth=1 https://github.com/nrjais/vimrc.git ~/.vim_runtime
@@ -89,8 +82,11 @@ brew cask install vlc
 echo "Installing visual-studio-code";
 brew cask install visual-studio-code
 
-echo "Installing skim pdf reader";
-brew cask install skim
+echo "Installing adobe reader";
+brew cask install adobe-acrobat-reader
+
+echo "Installing java";
+brew cask install java
 
 echo "Installing virtualbox and vagrant"
 brew cask install virtualbox
