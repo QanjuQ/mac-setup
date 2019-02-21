@@ -9,7 +9,7 @@ while true; do sudo -nv true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 #Ask for name to use in oh my zsh
 printf "\n\nEnter name to display in prompt"
 read -r name
-while [ -z "$name" ]
+while [ -z "$name" ];
 do
   read -r name
 done
