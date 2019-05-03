@@ -54,6 +54,7 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
 echo "Installing docker"
 brew install docker
 brew cask install docker
+brew install docker-compose
 
 echo "Installing node, clojure";
 brew install node
